@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import MainPage from './pages/MainPage.jsx';
+import CreateScoop from './pages/CreateScoop.jsx';
+import MyScoops from './pages/MyScoops.jsx';
+import Sidebar from './components/Sidebar.jsx';
+import PrivateChat from './pages/PrivateChat';
+import { Scoop } from './pages/CreateScoop.jsx';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <Sidebar>
+      <Routes>
+        <Route path="/" element={<MainPage/>}/>
+        <Route path="/mainPage" element={<MainPage/>}/>
+        <Route path="/createScoop" element={<CreateScoop/>}/>
+        <Route path="/myScoops" element={<MyScoops/>}/>
+        <Route path= {Scoop} element={<PrivateChat/>}/>
+      </Routes>
+    </Sidebar>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
